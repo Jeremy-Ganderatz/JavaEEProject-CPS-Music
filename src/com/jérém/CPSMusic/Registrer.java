@@ -31,15 +31,8 @@ public class Registrer extends HttpServlet {
 		request.setAttribute( "login", login );
 		request.setAttribute( "password", password );
 		
-		
-		
 		UsersDAO.createAccount( login, password );
-		
-			//request.setAttribute( "errorMessage", "login already existing" );			
-			request.getRequestDispatcher( "/login.jsp" ).forward( request, response );
-			
-		
-		
+		request.getRequestDispatcher( "/login.jsp" ).forward( request, response );
 	}
 
 }

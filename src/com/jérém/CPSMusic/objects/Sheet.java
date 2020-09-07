@@ -9,19 +9,22 @@ public class Sheet {
 	private String instrumentType;
 	private String originalArtistName;
 	private Blob dataSheet;
+	private int idUser;
+	private String base64Image;
 	
 	
 	public Sheet() {
-		this( 0, "unknown", "unknown", "unknow", null );
+		this( 0, "unknown", "unknown", "unknow", null, 0 );
 	}
 	
 	
-	public Sheet( int idSheet, String sheetName, String instrumentType, String originalArtistName, Blob dataSheet ) {
+	public Sheet( int idSheet, String sheetName, String instrumentType, String originalArtistName, Blob dataSheet, int idUser ) {
 		this.setIdSheet( idSheet );
 		this.setSheetName( sheetName );
 		this.setInstrumentType( instrumentType );
 		this.setOriginalArtistName( originalArtistName );
 		this.setDataSheet( dataSheet );
+		this.setIdUser( idUser );
 	}
 
 
@@ -74,6 +77,28 @@ public class Sheet {
 	public void setDataSheet(Blob dataSheet) {
 		this.dataSheet = dataSheet;
 	}
+
+
+	public String getBase64Image() {
+		return base64Image;
+	}
+
+
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
+
+
+	public int getIdUser() {
+		return idUser;
+	}
+
+
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
 	
+
 	
 }

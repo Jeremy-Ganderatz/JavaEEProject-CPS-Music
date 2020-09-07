@@ -1,6 +1,7 @@
 package com.jérém.CPSMusic;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,12 +43,17 @@ public class Login extends HttpServlet{
 		Users connectedUser = UsersDAO.isValidLogin( login, password );
 		
 		if ( connectedUser != null ) {
-			System.out.println("connectedUser");
+			//System.out.println("connectedUser");
 			HttpSession session = request.getSession( true );
-			System.out.println("session a true");
+			//System.out.println("session a true");
 			session.setAttribute( "connectedUser", connectedUser );
-			session.setAttribute( "sheetBrowser", new SheetBrowser() );
-			System.out.println("sessionAttribute is connectedUser");
+			try {
+				session.setAttribute( "sheetBrowser", new SheetBrowser() );
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//System.out.println("sessionAttribute is connectedUser");
 			request.getRequestDispatcher( "/viewSheetsDetails.jsp" ).forward( request, response );
 		
 		} else {

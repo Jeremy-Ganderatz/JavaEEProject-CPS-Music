@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,23 +11,27 @@
 	<body>
         <h1>View sheet - ${connectedUser.login}</h1>
 	    <br/>
-	   
-        Identifier: ${sheetBrowser.currentSheet.idSheet} <br/>
+	   		
         SheetName: ${sheetBrowser.currentSheet.sheetName} <br/>	
         InstrumentType: ${sheetBrowser.currentSheet.instrumentType} <br/>
         OriginalArtistName: ${sheetBrowser.currentSheet.originalArtistName} <br/>
-        DataSheet: ${sheetBrowser.currentSheet.dataSheet} <br/>
+        <img src="data:image/jpg;base64,${sheetBrowser.currentSheet.base64Image}" width="240" height="300">
+        
         <br/>
         
         <form action="viewSheetsDetails" method="post">
             <input name="btnPrevious" type="submit" value="Previous" />
             &nbsp; &nbsp;
-            <input name="btnAdd" type="submit" value="Add to shopping cart" />
+            <input name="btnAdd" type="submit" value="Add to shopping basket" />
             &nbsp; &nbsp;
             <input name="btnNext" type="submit" value="Next" />
-        </form>  <br/>
+            
+            <input type="button" onclick=window.location.href='http://localhost:8080/CPS-Music/uploadSheet' value=UploadSheet />
+        </form>  
+        
+        <br/>
         
          ${sheetBrowser.shoppingCartSize} sheet<c:if test="${sheetBrowser.shoppingCartSize gt 1}">s</c:if> in the shopping cart.<br/>
-        <a href="summary">View the shopping cart</a>
+        <a href="summary">View the shopping basket</a>
 	</body>
 </html>

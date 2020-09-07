@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Shopping cart summary</title>
+		<title>Shopping basket summary</title>
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 	</head>
 	<body>
-        <h1>Shopping cart summary - ${connectedUser.login}</h1>
+        <h1>Shopping basket summary - ${connectedUser.login}</h1>
 	    <br/>
 	   
 		<table style="width: 60%; border: 1px solid black; margin: auto;"> 
@@ -24,7 +25,7 @@
 			
 			<tbody>
 			
-				<c:forEach items="#{sheetBrowser.shoppingCart}" var"line">
+				<c:forEach items="#{sheetBrowser.shoppingCart}" var="line">
 					<tr>
 						<td>${line.sheet.idSheet}</td>
 						<td>${line.sheet.sheetName}</td>

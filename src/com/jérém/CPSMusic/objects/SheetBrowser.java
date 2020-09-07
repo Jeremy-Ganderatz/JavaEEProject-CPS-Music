@@ -1,5 +1,7 @@
 package com.jérém.CPSMusic.objects;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class SheetBrowser {
 	private List<ShoppingCartLine> shoppingCart = new ArrayList<>();
 	
 	
-	public SheetBrowser() {
+	public SheetBrowser() throws SQLException, IOException {
 		currentSheet = SheetDAO.getSheetById( currentPosition );
 	}
 	
@@ -36,14 +38,14 @@ public class SheetBrowser {
 	}
 	
 	
-	public void goPrevious() {
+	public void goPrevious() throws SQLException, IOException {
 		if ( --currentPosition < 1 ) {
 			currentPosition = sheetsCount;
 		}
 		currentSheet = SheetDAO.getSheetById( currentPosition );
 	}
 	
-	public void goNext() {
+	public void goNext() throws SQLException, IOException {
 		if ( ++currentPosition > sheetsCount ) {
 			currentPosition = 1;
 		}

@@ -1,6 +1,7 @@
 package com.jérém.CPSMusic;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ import com.jérém.CPSMusic.objects.SheetBrowser;
 public class ViewSheetsDetails extends HttpServlet {
 
 	private static final long serialVersionUID = 550038282401302959L;
-
+	
 
 	@Override
 	protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
@@ -24,7 +25,7 @@ public class ViewSheetsDetails extends HttpServlet {
 			response.sendRedirect( "login" );
 			return;
 		}
-		
+        
 		request.getRequestDispatcher( "/viewSheetsDetails.jsp" ).forward( request, response );
 	}
 	
@@ -39,9 +40,19 @@ public class ViewSheetsDetails extends HttpServlet {
 		SheetBrowser browser = (SheetBrowser) session.getAttribute( "sheetBrowser" );
 		
 		if ( request.getParameter( "btnPrevious" ) != null ) {
-			browser.goPrevious();
+			try {
+				browser.goPrevious();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if ( request.getParameter( "btnNext" ) != null ) {
-			browser.goNext();
+			try {
+				browser.goNext();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if ( request.getParameter( "btnAdd" ) != null ) {
 			browser.addCurrentSheet();
 		}

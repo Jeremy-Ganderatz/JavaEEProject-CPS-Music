@@ -13,9 +13,9 @@
 	
 	    <form method="post" action="login">
 	        
-	        <input type=button onclick=window.location.href='http://localhost:8080/CPS-Music/login'; value=Connection />
+	        <input type=button onclick=window.location.href='http://localhost:8080/CPS-Music/login' value=Connection />
 	        
-	        <input type=button onclick=window.location.href='http://localhost:8080/CPS-Music/registrer'; value=Registrer />
+	        <input type=button onclick=window.location.href='http://localhost:8080/CPS-Music/registrer' value=Registrer />
 	        
             <div class="errorMessage">${errorMessage}</div>
             
