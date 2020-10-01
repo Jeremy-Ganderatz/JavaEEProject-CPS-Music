@@ -9,13 +9,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
-import com.jérém.CPSMusic.enumeration.State;
+import com.jérém.CPSMusic.enumeration.WichSort;
 import com.jérém.CPSMusic.objects.Sheet;
 
 public class SheetDAO extends DAOContext{
@@ -46,11 +45,11 @@ public class SheetDAO extends DAOContext{
 	public static List<Integer> getSheetListSorted(String sortParameter) {
 		String strSql;
 		List<Integer> idsList= new ArrayList<Integer>();
-		State state = instrumentOrPriceOrEverything(sortParameter);
-		if (state == State.EVERYTHING) {
+		WichSort state = instrumentOrPriceOrEverything(sortParameter);
+		if (state == WichSort.EVERYTHING) {
 			strSql = "SELECT idSheet FROM T_Sheet";
 			idsList = getSheetIdsUnSorted(strSql);
-		} else if (state == State.INSTRUMENT) {
+		} else if (state == WichSort.INSTRUMENT) {
 			strSql = getTheQueryIfInstrument(sortParameter);
 			idsList = getSheetIdsSortedByInstrument(strSql, sortParameter);
 		} else {
@@ -193,15 +192,15 @@ public class SheetDAO extends DAOContext{
 //	}
 	
 	
-	private static State instrumentOrPriceOrEverything (String sortParameter) {
-		State state;
+	private static WichSort instrumentOrPriceOrEverything (String sortParameter) {
+		WichSort state;
 		String[] compareInstrument = new String[]{"PIANO","VIOLON","CLARINETTE","GUITARE"};
 		if (sortParameter == "TOUS") {
-			state = State.EVERYTHING;
+			state = WichSort.EVERYTHING;
 		} else if (Arrays.asList(compareInstrument).contains(sortParameter)) {
-			state = State.INSTRUMENT;
+			state = WichSort.INSTRUMENT;
 		} else {
-			state = State.PRICE;
+			state = WichSort.PRICE;
 		}
 		return state;
 	}

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.jérém.CPSMusic.DAO.DAOContext;
 import com.jérém.CPSMusic.DAO.UsersDAO;
-import com.jérém.CPSMusic.enumeration.SortedSheet;
+import com.jérém.CPSMusic.enumeration.Sorted;
 import com.jérém.CPSMusic.objects.SheetBrowser;
 import com.jérém.CPSMusic.objects.Users;
 
@@ -44,7 +44,7 @@ public class Login extends HttpServlet{
 		Users connectedUser = UsersDAO.isValidLogin( login, password );
 		
 		if ( connectedUser != null ) {
-			SortedSheet sortParameter = SortedSheet.TOUS;
+			Sorted sortParameter = Sorted.TOUS;
 			HttpSession session = request.getSession( true );
 			session.setAttribute( "connectedUser", connectedUser );
 			session.setAttribute("instrumentType", sortParameter);

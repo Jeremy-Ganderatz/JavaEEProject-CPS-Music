@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jérém.CPSMusic.DAO.SheetDAO;
-import com.jérém.CPSMusic.enumeration.SortedSheet;
+import com.jérém.CPSMusic.enumeration.Sorted;
 
 public class SheetBrowser {
 	
@@ -17,7 +17,7 @@ public class SheetBrowser {
 	private List<ShoppingCartLine> shoppingCart = new ArrayList<>();
 	
 	
-	public SheetBrowser(SortedSheet object) throws SQLException, IOException {
+	public SheetBrowser(Sorted object) throws SQLException, IOException {
 		String sortParameter = object.name();
 		idsList = SheetDAO.getSheetListSorted(sortParameter);
 		index = 0;
