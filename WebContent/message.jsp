@@ -8,6 +8,6 @@
 </head>
 <body>
         <h3><%=request.getAttribute("Message")%></h3>
-        <input type="button" onclick=window.location.href='http://localhost:8080/CPS-Music/viewSheetsDetails' value=UploadSheet />
+        <input type="button" onclick=window.location.href='http://localhost:8080/CPS-Music/viewSheetsDetails' value=Retour />
 </body>
 </html>

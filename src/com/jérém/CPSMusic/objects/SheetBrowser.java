@@ -6,21 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jérém.CPSMusic.DAO.SheetDAO;
+import com.jérém.CPSMusic.enumeration.SortedSheet;
 
 public class SheetBrowser {
 	
-	private int currentPosition = 1;
+	private List<Integer> idsList;
+	private int currentPosition;
 	private Sheet currentSheet;
-	private int sheetsCount = SheetDAO.getSheetCount();
-	
+	private int index;
 	private List<ShoppingCartLine> shoppingCart = new ArrayList<>();
 	
 	
-	public SheetBrowser() throws SQLException, IOException {
+	public SheetBrowser(SortedSheet object) throws SQLException, IOException {
+		String sortParameter = object.name();
+		idsList = SheetDAO.getSheetListSorted(sortParameter);
+		index = 0;
+		currentPosition = idsList.get(index);
 		currentSheet = SheetDAO.getSheetById( currentPosition );
 	}
 	
-	public Sheet getCurrentSheet() {
+	public Sheet getCurrentSheet() throws SQLException, IOException {
 		return currentSheet;
 	}
 
@@ -37,20 +42,25 @@ public class SheetBrowser {
 		return fullQuantity;
 	}
 	
-	
 	public void goPrevious() throws SQLException, IOException {
-		if ( --currentPosition < 1 ) {
-			currentPosition = sheetsCount;
+		if ( --index < 0 ) {
+			index = idsList.size()-1;
+			currentPosition = idsList.get(index);
 		}
+		
+		currentPosition = idsList.get(index);
 		currentSheet = SheetDAO.getSheetById( currentPosition );
 	}
 	
 	public void goNext() throws SQLException, IOException {
-		if ( ++currentPosition > sheetsCount ) {
-			currentPosition = 1;
+		if ( ++index > idsList.size()-1 ) {
+			index = 0;
+			currentPosition = idsList.get(index);
 		}
+		currentPosition = idsList.get(index);
 		currentSheet = SheetDAO.getSheetById( currentPosition );
 	}
+	
 	
 	public void addCurrentSheet() {
 		for (ShoppingCartLine shoppingCartLine : shoppingCart) {

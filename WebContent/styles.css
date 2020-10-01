@@ -1,11 +1,79 @@
 body {
-    text-align: center;
+    background-color: white;
+}
+
+header {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: auto;
+  	margin-right: auto;
+  	text-align: center;
+}
+
+nav {
+	margin-bottom: 50px;
+	margin-left: auto;
+  	margin-right: auto;
+	display: inline-block;
+    width: 100%;
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+#centerBlock {
+	margin-left: auto;
+  	margin-right: auto;
+  	text-align: center;	
+}
+
+li {
+	list-style:none !important;
+	color:#FFF;
+	padding:5px;
+	font-size:20px;
+	text-decoration:none;
+}
+ 
+
+nav ul li {
+	list-style: none;
+	line-height:44px;
+	float:left;
+	background-color: white;
+	margin-top: auto;
+	margin-bottom: 20px;
+}
+ 
+nav ul li a {
+	color: black;
+	padding:5px;
+	font-size:15px;
+	text-decoration:none;
+	text-align: center;
+	
 	
 }
-
-form {
+ 
+li a:hover {
+	border-bottom:3px black solid; /* couleur et epaisseur de la ligne qui apparait quand on survole*/
 }
 
+nav ul li ul { 
+	display:none;
+	background-color: white;
+} /* Rend le menu déroulant caché par défaut */
+ 
+nav ul li:hover ul { /* Affiche la dropNav au survol de la souris avec la class .drop */
+	z-index:99999;
+	display:list-item !important;
+	position:absolute;
+	margin-top:5px;
+	margin-left:-10px;
+}
+ 
+nav ul li:hover ul li {
+	float:none;
+}
 
 .errorMessage {
     font-weight: bold;

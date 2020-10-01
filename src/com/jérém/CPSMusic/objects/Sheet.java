@@ -11,6 +11,7 @@ public class Sheet {
 	private Blob dataSheet;
 	private int idUser;
 	private String base64Image;
+	private int price;
 	
 	
 	public Sheet() {
@@ -25,6 +26,7 @@ public class Sheet {
 		this.setOriginalArtistName( originalArtistName );
 		this.setDataSheet( dataSheet );
 		this.setIdUser( idUser );
+		this.setPrice( price );
 	}
 
 
@@ -98,7 +100,14 @@ public class Sheet {
 		this.idUser = idUser;
 	}
 
-	
 
-	
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 }

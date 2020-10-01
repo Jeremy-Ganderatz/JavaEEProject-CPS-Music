@@ -48,6 +48,7 @@ public class UploadSheetToDB extends HttpServlet {
         String sheetName = request.getParameter("sheetName");
         String instrumentType = request.getParameter("instrumentType");
         String originalArtistName = request.getParameter("originalArtistName");
+        int price = Integer.parseInt(request.getParameter("price"));
         //Blob dataSheet = request.getInputStream(photo);
          
         InputStream inputStream = null; // input stream of the upload file
@@ -67,7 +68,7 @@ public class UploadSheetToDB extends HttpServlet {
         Users connectedUser =  (Users) session.getAttribute("connectedUser");
         int idUser = connectedUser.getIdUser();
         
-        SheetDAO.addSheet(sheetName, instrumentType, originalArtistName, inputStream, idUser);
+        SheetDAO.addSheet(sheetName, instrumentType, originalArtistName, inputStream, idUser, price);
         
         String message = "File uploaded and saved into database";  // message will be sent back to client
          

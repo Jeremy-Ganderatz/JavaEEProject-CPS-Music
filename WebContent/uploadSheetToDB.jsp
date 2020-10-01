@@ -2,33 +2,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>File Upload to Database</title>
+<title>Upload to Database</title>
 </head>
 <body>
    
-        <h1>File Upload to Database Demo</h1>
+        <h1>Renseigner votre partition</h1>
         <form method="post" action="uploadSheet" enctype="multipart/form-data">
             <table>
             	<tr>
-                    <td>Sheet Name: </td>
+                    <td>Nom : </td>
                     <td><input type="text" name="sheetName" size="50"/></td>
                 </tr>
                 <tr>
-                    <td>Instrument Type: </td>
+                    <td>Type d'instrument : </td>
                     <td><input type="text" name="instrumentType" size="50"/></td>
                 </tr>
                 
                 <tr>
-                    <td>Original Artist Name : </td>
+                    <td>Artiste : </td>
                     <td><input type="text" name="originalArtistName" size="50"/></td>
                 </tr>
                 <tr>
-                    <td>Sheet pic : </td>
+                    <td>Prix : </td>
+                    <td><input type="number" name="price" size="4"/></td>
+                </tr>
+                <tr>
+                    <td>Photo : </td>
                     <td><input type="file" name="photo" size="50"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Save">
+                        <input type="submit" value="Enregistrer">
                     </td>
                 </tr>
             </table>

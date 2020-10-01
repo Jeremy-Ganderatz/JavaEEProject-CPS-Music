@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.jérém.CPSMusic.DAO.DAOContext;
 import com.jérém.CPSMusic.DAO.UsersDAO;
+import com.jérém.CPSMusic.enumeration.SortedSheet;
 import com.jérém.CPSMusic.objects.SheetBrowser;
 import com.jérém.CPSMusic.objects.Users;
 
@@ -43,17 +44,16 @@ public class Login extends HttpServlet{
 		Users connectedUser = UsersDAO.isValidLogin( login, password );
 		
 		if ( connectedUser != null ) {
-			//System.out.println("connectedUser");
+			SortedSheet sortParameter = SortedSheet.TOUS;
 			HttpSession session = request.getSession( true );
-			//System.out.println("session a true");
 			session.setAttribute( "connectedUser", connectedUser );
+			session.setAttribute("instrumentType", sortParameter);
 			try {
-				session.setAttribute( "sheetBrowser", new SheetBrowser() );
+				session.setAttribute( "sheetBrowser", new SheetBrowser(sortParameter) );
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//System.out.println("sessionAttribute is connectedUser");
 			request.getRequestDispatcher( "/viewSheetsDetails.jsp" ).forward( request, response );
 		
 		} else {
